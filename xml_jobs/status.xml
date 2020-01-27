@@ -1,0 +1,47 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.32">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.70">
+    <script>
+node {
+    stage (&apos;Post-Build&apos;) {
+       /*manager.addShortText(&quot;VERSION Black on Lime Green&quot;, &quot;black&quot;, &quot;limegreen&quot;, &quot;0px&quot;, &quot;white&quot;)
+        manager.addShortText(&quot;OBSOLETE YellowGrey5pxGrey&quot;, &quot;yellow&quot;, &quot;grey&quot;, &quot;5px&quot;, &quot;grey&quot;)
+
+        manager.addBadge(&quot;warning.gif&quot;, &quot;Warning test&quot;)
+        manager.addWarningBadge(&quot;other warning test&quot;)
+
+        manager.addShortText(&quot;Some text&quot;)
+        manager.addShortText(&quot;\ntext&quot;)
+        manager.addShortText(&quot;same line&quot;, &quot;black&quot;, &quot;lightgreen&quot;, &quot;0px&quot;, &quot;white&quot;)
+
+        manager.addBadge(&quot;star-gold.gif&quot;, &quot;icon from Jenkins&quot;)*/
+        manager.addBadge(&quot;yellow.gif&quot;, &quot;icon from groovy-postbuild plugin&quot;)
+        manager.addBadge(&quot;/images/16x16/yellow.gif&quot;, &quot;icon from Jenkins&quot;)
+       manager.addHtmlBadge(&quot;&lt;H2&gt;NODEJS&lt;/H2&quot;)
+    }
+
+    stage(&apos;update histroy&apos;){
+        manager.addShortText(&quot;deployed&quot;)
+        manager.createSummary(&quot;gear2.gif&quot;).appendText(&quot;&lt;h2&gt;Successfully deployed&lt;/h2&gt;&quot;, false)
+
+    }
+
+ stage(&apos;Update status&apos;) {
+        def summary1 = createSummary(icon: &quot;notepad.png&quot;, text: &quot;started Builds:&lt;br&gt;&quot;)
+        summary1.appendText(&quot;myBuild1: SUCCESS&lt;br&gt;&quot;, false)
+        summary1.appendText(&quot;myBuild2: UNSTABLE&lt;br&gt;&quot;, false)
+
+        currentBuild.description = &quot;&lt;a href=&apos;http://stackoverflow.com&apos;&gt;Stackoverbuild build&quot; + env.BUILD_ID + &quot;&lt;/a&gt;&quot;
+    }
+
+
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
